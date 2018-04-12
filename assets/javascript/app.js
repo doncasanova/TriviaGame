@@ -17,14 +17,22 @@ var misses = 0;
 var nextUp = 0;
 var currentQuestion = 0;
 var test = [question1, question2, question3, question4, question5]
-var testGuess = ["guess1", "guess2", "guess3", "guess4"]
-
+var correctG = [".choice1", ".choice2", ".choice3", ".choice4"]
+var cl = 0
 var clearImg;
 //------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+//click function to start game
+$("#start").click(function (countTime) {
+  // console.log("hello")
+  nextQuestion()
+
+});
+//------------------------------------------------------------------------------------------------------
 //function to set question objects to DOM
-function nextQuestion(nextUp) {
-  currentQuestion++
-  clearInterval(clearImg);
+function nextQuestion() {
+  // currentQuestion++
+  console.log(nextUp)
   countDown();
   // $('#timeToGo').each(countDown);   //starts counter
   $("#question").html(test[nextUp].hint);
@@ -32,36 +40,43 @@ function nextQuestion(nextUp) {
   $("#guess2").html(test[nextUp].guess2);
   $("#guess3").html(test[nextUp].guess3);
   $("#guess4").html(test[nextUp].guess4);
+  nextUp++
   console.log(currentQuestion)
-
-
 }
 //------------------------------------------------------------------------------------------------------
-//adds gif if correct guess
-function correctGuess() {
-  $(`.choice:contains(${testGuess[0]})`).on('click', function () {
-    $("#test").attr("src", "dancing-while-mowing-the-lawn.gif");
-    var nq = setInterval(function () {
-      console.log(currentQuestion + "  correct")
-      nextQuestion(currentQuestion)
-      $("#test").attr("src", "");
-      clearInterval(nq);
-    }, 3000);
-  });
+function clearQuestion() {
+  var nq = setInterval(function () {
+    console.log(currentQuestion + "  clear")
+    nextQuestion()
+    $("#test").attr("src", "");
+    clearInterval(nq);
+  }, 3000);
 }
-//------------------------------------------------------------------------------------------------------
-//wrong guess
-function wrongtGuess() {
-  $(`.choice:contains(${testGuess[1]})`).on('click', function () {
-    $("#test").attr("src", "animated-gifs-ghosts-16.gif");
-    var nq = setInterval(function () {
-      console.log(currentQuestion + "  wrong")
-      nextQuestion(currentQuestion)
-      $("#test").attr("src", "");
-      clearInterval(nq);
-    }, 3000);
-  });
-}
+
+$(correctG [0]).on('click', function () {
+  $("#test").attr("src", "dancing-while-mowing-the-lawn.gif");
+  console.log("hello")
+  clearQuestion()
+});
+
+$(correctG [1]).on('click', function () {
+  $("#test").attr("src", "dancing-while-mowing-the-lawn.gif");
+  console.log("hello...2")
+  clearQuestion()
+});
+
+$(correctG [2]).on('click', function () {
+  $("#test").attr("src", "dancing-while-mowing-the-lawn.gif");
+  console.log("hello...2")
+  clearQuestion()
+});
+
+$(correctG [3]).on('click', function () {
+  $("#test").attr("src", "dancing-while-mowing-the-lawn.gif");
+  console.log("hello...2")
+  clearQuestion()
+});
+
 //------------------------------------------------------------------------------------------------------
 //misses counter
 function missesCount() {
@@ -85,80 +100,47 @@ function lossesCounter() {
 //-------------------------------------------------------------------------------------------------------
 //timer
 var countDown = function () {
+  console.log("here")
   var ct = 15;
   var $elem = $('#timeToGo');
-  var display = function () {
+  var display = function (cl) {
     $elem.text(ct--);
   }
 
   var iv = setInterval(function () {
+
+    $(correctG [0]).on('click', function () {
+      clearInterval(iv)
+    });
+
+    $(correctG [1]).on('click', function () {
+      clearInterval(iv)
+    });
+
+    $(correctG [2]).on('click', function () {
+      clearInterval(iv)
+    });
+
+    $(correctG [3]).on('click', function () {
+      clearInterval(iv)
+    });
+
     display()
+
+    console.log()
     if (ct === -1) {
       clearInterval(iv)
-      misses++
-      $(".misses").html(misses);
-      // console.log(currentQuestion + "   miss")
-      // var nq = setInterval(function () {
-      //   console.log(currentQuestion + "  number")
-      //   nextQuestion(currentQuestion)
-      //   clearInterval(nq);
-      // }, 3000);
-      $("#test").attr("src", "animated-gifs-ghosts-16.gif");
-          clearInterval(iv);
-          console.log("hello again")
-          nextQuestion(currentQuestion)
-           clearImg = setInterval(function () {
-            $("#test").attr("src", "");
-          }, 3000);
-   
-
 
     }
-
+    // correctGuess2()
 
   }, 1000);
-  // var iv = setInterval(function () {
-  //   // console.log(ct)
-  //   countTime = ct
-  //   display();
-  //   if (ct === -1) {
-  //     misses++
-  //     $(".misses").html(misses);
 
-  //     // var nq = setInterval(function () {
 
-  //     //   console.log(currentQuestion + "  number")
-  //     //   nextQuestion(currentQuestion)
-  //     //   clearInterval(nq);
-  //     // }, 3000);
-
-  //     $("#test").attr("src", "animated-gifs-ghosts-16.gif");
-  //     clearInterval(iv);
-  //     console.log("hello again")
-  //     nextQuestion(currentQuestion)
-  //     //  clearImg = setInterval(function () {
-  //     //   $("#test").attr("src", "");
-  //     // }, 3000);
-
-  //     // $('#timeToGo').each(countDown);   //starts counter
-
-  //   }
-  // }, 1000);
   display();
 };
 
-//------------------------------------------------------------------------------------------------------
-//click function to start game
-$("#start").click(function (countTime) {
-  console.log("hello")
-  nextQuestion(currentQuestion)
-  // currentQuestion++
-  // countDown();
-  // $('#timeToGo').each(countDown);   //starts counter
 
-  // correctGuess()
-
-});
 
 
 
