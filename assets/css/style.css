@@ -8,9 +8,14 @@ body{
 .questions:hover{
     border: 5px;
     border-radius: 2px;
-    background-color: yellow !important;
+    background-color: darkgreen !important;
     margin: 0 auto;
 }
-/* a:hover { 
-    
-} */
+.guessStyle{
+    color: white;
+    font-size: 20px;
+}
+
+.clickBground{
+    background-color: sienna;
+}
