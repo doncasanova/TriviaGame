@@ -1,6 +1,16 @@
 
 
 body{
-    border-radius: 2rem; background: url("../images/ComfortYoga.png") no-repeat ;
-    /* background-size: 100% 100%; */
+    border-radius: 2rem; background: url("../images/ComfortYoga.png") no-repeat;
+    
 }
+
+.questions:hover{
+    border: 5px;
+    border-radius: 2px;
+    background-color: yellow;
+    margin: 0 auto;
+}
+/* a:hover { 
+    
+} */
