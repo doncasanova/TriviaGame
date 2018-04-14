@@ -8,7 +8,7 @@ body{
 .questions:hover{
     border: 5px;
     border-radius: 2px;
-    background-color: yellow;
+    background-color: yellow !important;
     margin: 0 auto;
 }
 /* a:hover { 
