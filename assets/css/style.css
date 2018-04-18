@@ -5,17 +5,23 @@ body{
     
 }
 
-.questions:hover{
+.answers:hover{
     border: 5px;
-    border-radius: 2px;
+    border-radius: 15px;
     background-color: darkgreen !important;
-    margin: 0 auto;
+   
 }
 .guessStyle{
     color: white;
     font-size: 20px;
+    margin: auto;
 }
 
 .clickBground{
     background-color: sienna;
+}
+
+.questions{
+    border-radius: 15px;
+    width: 50%;;
 }

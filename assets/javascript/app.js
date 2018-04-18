@@ -8,6 +8,7 @@ var question4 = { hint: "How many Bandha’s are there?", guess1: "7", guess2: "
 var question5 = { hint: "What posture has the same benefits as a 2 hour nap?", guess1: "Uttanasana", guess2: "Viparita karani", guess3: "Padmasana", guess4: "Vrksasana", Answer: 2 };
 //------------------------------------------------------------------------------------------------------
 //restart
+
 $("#reset").click(function () {
   console.log('restart')
   location.reload();
@@ -15,7 +16,7 @@ $("#reset").click(function () {
   });
 //------------------------------------------------------------------------------------------------------
 //vars 
-
+var hideClicks;
 var anser = 1;
 var wins = 0;
 var losses = 0;
@@ -29,14 +30,17 @@ var cl = 0
 var clearImg;
 var iv;
 
+function hideClicks(unHide){
+if ( hideClicks == 2){
+  console.log(hideClicks + "  inside of guess click")
 $(".choice1").on('click', function () {
-
   if (1 === anser) {
     $(".rollUp2").hide("slow", function () {
     });
     $("#test").attr("src", "../TriviaGame/assets/images/tumblr_mihc1eBiWZ1r7bisgo1_500.gif");
     winsCount()
     clearQuestion()
+   
   }
   else {
     $(".rollUp2").hide("slow", function () {
@@ -45,7 +49,9 @@ $(".choice1").on('click', function () {
     lossesCounter()
     clearQuestion()
   }
+  
 });
+}
 //-------------------------------------------------------------------------------------------------------
 //clicks for answer 2
 $(".choice2").on('click', function () {
@@ -100,6 +106,7 @@ $(".choice4").on('click', function () {
     clearQuestion()
   }
 });
+}
 //------------------------------------------------------------------------------------------------------
 //slide up tally board
 $(".rollUp").hide("slow", function () {
@@ -109,14 +116,14 @@ $(".rollUp").hide("slow", function () {
 //click function to start game
 
 $("#start").click(function (countTime) {
-console.log(nextUp)
   $("#question").html(test[nextUp].hint);
   $("#guess1").html(test[nextUp].guess1);
   $("#guess2").html(test[nextUp].guess2);
   $("#guess3").html(test[nextUp].guess3);
   $("#guess4").html(test[nextUp].guess4);
 
-  // console.log("hello")
+
+  hideClicks(hideClicks = 2)
   nextQuestion()
 
 });
@@ -133,7 +140,6 @@ function nextQuestion() {
   countDown();
   // $('#timeToGo').each(countDown);   //starts counter
   anser = (test[nextUp].Answer);
-  console.log(test[nextUp].Answer +  "  answer")
   nextUp++
   // console.log(currentQuestion)
 
@@ -159,7 +165,6 @@ function clearQuestion() {
       $(".rollUp").show("slow", function () {
       });
 
-      console.log(currentQuestion + "  end of game")
     }
     clearInterval(nq);
     if (currentQuestion < 5) {
@@ -218,7 +223,6 @@ var countDown = function () {
   }, 1000);
 
   timersUp--
-  console.log("time count to end  " + timersUp)
   if (timersUp === 0) {
     clearInterval(iv)
   }
