@@ -7,14 +7,6 @@ var question3 = { hint: "What is Bandha?", guess1: "Flavor of yoga tea", guess2:
 var question4 = { hint: "How many Bandha’s are there?", guess1: "7", guess2: "1", guess3: "5", guess4: "3", Answer: 4 };
 var question5 = { hint: "What posture has the same benefits as a 2 hour nap?", guess1: "Uttanasana", guess2: "Viparita karani", guess3: "Padmasana", guess4: "Vrksasana", Answer: 2 };
 //------------------------------------------------------------------------------------------------------
-//restart
-
-$("#reset").click(function () {
-  console.log('restart')
-  location.reload();
-  
-  });
-//------------------------------------------------------------------------------------------------------
 //vars 
 var hideClicks;
 var anser = 1;
@@ -112,6 +104,14 @@ $(".choice4").on('click', function () {
 $(".rollUp").hide("slow", function () {
   alert("Animation complete.");
 });
+//------------------------------------------------------------------------------------------------------
+//restart
+
+$("#reset").click(function () {
+  console.log('restart')
+  location.reload();
+  
+  });
 //------------------------------------------------------------------------------------------------------
 //click function to start game
 
